@@ -72,6 +72,15 @@ public class SaleController {
         return ResponseEntity.ok(sale);
     }
     
+    @GetMapping("/byClient/{id}")
+    public ResponseEntity<List<RegisteredSaleDto>> findAllByClient(@PathVariable("id") long id){
+        List<RegisteredSaleDto> sales = saleService.findAllByClient(id);
+        if (sales==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(sales);
+    }
+    
     @GetMapping()
     public ResponseEntity<List<RegisteredSaleDto>> findAll(){
         return ResponseEntity.ok(saleService.findAll());

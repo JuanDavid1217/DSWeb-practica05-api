@@ -20,6 +20,7 @@ import org.uv.dswebpractica05.dtos.NewDetailDto;
 import org.uv.dswebpractica05.dtos.NewSaleDto;
 import org.uv.dswebpractica05.dtos.RegisteredSaleDto;
 import org.uv.dswebpractica05.exceptions.Exceptions;
+import org.uv.dswebpractica05.models.Client;
 import org.uv.dswebpractica05.models.Detail;
 import org.uv.dswebpractica05.models.Product;
 import org.uv.dswebpractica05.models.Sale;
@@ -198,6 +199,14 @@ public class SaleService {
         }else{
             return registeredSaleConverter.entitytoDTO(optionalSale.get());
         }
+    }
+    
+    public List<RegisteredSaleDto> findAllByClient(long id){
+        Optional<Client> optionalClient = clientRepository.findById(id);
+        if(optionalClient.isEmpty()){
+            return null;
+        }
+        return registeredSaleConverter.entityListtoDTOList(optionalClient.get().getSales());
     }
     
     public List<RegisteredSaleDto> findAll(){
