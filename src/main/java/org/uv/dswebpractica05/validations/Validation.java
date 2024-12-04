@@ -37,7 +37,7 @@ public class Validation {
     
     public static String dateValidation(String date){
         String newFormat=null;
-        if(date.length()>8 && date.length()<11){
+        if(date.length()==10){
             String [] parts=date.split("/");
             if(parts.length==3){
                 try{
