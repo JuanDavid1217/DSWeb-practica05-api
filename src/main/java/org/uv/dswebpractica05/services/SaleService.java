@@ -77,7 +77,7 @@ public class SaleService {
     }
     
     public NewSaleDto checkDate(NewSaleDto newSaleDto){
-        if (dateValidation(newSaleDto.getDate()).equals("Invalid Date.") || dateValidation(newSaleDto.getDate())==null){
+        if (dateValidation(newSaleDto.getDate()).equals("Invalid Date.")){
             throw new Exceptions("Fecha Invalida", HttpStatus.CONFLICT);
         }else{
             newSaleDto.setDate(dateValidation(newSaleDto.getDate()));
